@@ -38,7 +38,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :prototype
+- has_one :purchase
 
 
 
@@ -53,8 +53,8 @@
 ### Association
 
 - belongs_to :user
-- has_many :item
-- has_many :street addresses
+- belongs_to :item
+- has_one :street address
 
 
 ## street addressesテーブル
@@ -62,7 +62,7 @@
 | Column                          | Type       | Options                        |
 | ------------------------------- | ---------- | ------------------------------ |
 | post_code                       | string     | null: false                    |
-| prefectures_id (Active_Hash)    | string     | null: false                    |
+| prefectures_id                  | integer    | null: false                    |
 | municipality                    | string     | null: false                    |
 | address                         | string     | null: false                    |
 | building_name                   | string     |                                |
@@ -71,4 +71,4 @@
 
 ### Association
 
-- has_many :purchases
+- belongs_to :purchase
