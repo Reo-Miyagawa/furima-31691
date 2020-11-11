@@ -1,24 +1,68 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| nickname        | string     | null: false                    |
+| email           | string     | null: false, unique: true      |
+| password        | string     | null: false                    |
+| last_name       | string     | null: false                    |
+| first_name      | string     | null: false                    |
+| last_name_kana  | string     | null: false                    |
+| first_name_kana | string     | null: false                    |
 
-Things you may want to cover:
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## itemsテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| image                | text       | null: false                    |
+| name                 | string     | null: false                    |
+| explanation          | text       | null: false                    |
+| user                 | references | null: false, foreign_key:true  |
 
-* Deployment instructions
 
-* ...
+### Association
+
+- belongs_to :user
+- has_many :prototype
+
+
+
+## purchasesテーブル
+
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| user                 | references | null: false, foreign_key:true  |
+| item                 | references | null: false, foreign_key:true  |
+
+
+### Association
+
+- belongs_to :user
+- has_many :items
+- has_many :street_addresses
+
+
+## street_addressesテーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| post_code      | text       | null: false                    |
+| municipality   | text       | null: false                    |
+| address        | text       | null: false                    |
+| building_name  | references | null: false                    |
+| phone_number   | text       | null: false                    |
+| purchase       | references | null: false, foreign_key:true  |
+
+
+### Association
+
+- has_many :purchases
