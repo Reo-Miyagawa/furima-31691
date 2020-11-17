@@ -9,5 +9,6 @@ FactoryBot.define do
     birthday                   {"1930-01-01"}
     password                   {"111aaa"}
     password_confirmation      {password}
+    # association :item
   end
 end
