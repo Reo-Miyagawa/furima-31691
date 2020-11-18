@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :shipping_area_id, numericality: { other_than: 0, message: 'select' }
     validates :days_to_ship_id, numericality: { other_than: 0, message: 'select' }
     validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
-    validates_inclusion_of :price, in: 300..9999999, message: 'Out of setting range'
+    validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
     validates :image
   end
 
