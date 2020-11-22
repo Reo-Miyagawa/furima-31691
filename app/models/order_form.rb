@@ -10,6 +10,8 @@ class OrderForm #< ApplicationRecord
     validates :address
     validates :phone_number, numericality: { with: /\A\d{11}\z/, message: 'number Input only number' }
     validates :token, presence: true
+    validates :user_id
+    validates :item_id
   end
 
 

@@ -8,7 +8,8 @@ RSpec.describe OrderForm, type: :model do
 
   describe '購入機能' do
     context '購入機能がうまくいくとき' do
-      it 'post_code、prefectures_id、municipality、address、building_name、phone_number,tokenが存在すれば登録できる' do
+      it 'post_code、prefectures_id、municipality、address、building_name、phone_number,token,user_id,item_idが存在すれば登録できる' do
+        
         expect(@order_form).to be_valid
       end
     end
@@ -19,8 +20,8 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Post code can't be blank")
       end
-      it 'prefectures_idが空だと登録できない' do
-        @order_form.prefectures_id = ""
+      it 'prefectures_idが0だと登録できない' do
+        @order_form.prefectures_id = 0
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Prefectures select")
       end
