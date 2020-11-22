@@ -9,7 +9,10 @@ RSpec.describe OrderForm, type: :model do
   describe '購入機能' do
     context '購入機能がうまくいくとき' do
       it 'post_code、prefectures_id、municipality、address、building_name、phone_number,token,user_id,item_idが存在すれば登録できる' do
-        
+        expect(@order_form).to be_valid
+      end
+      it '建物名が空欄でも登録できる' do
+        @order_form.building_name = ""
         expect(@order_form).to be_valid
       end
     end
