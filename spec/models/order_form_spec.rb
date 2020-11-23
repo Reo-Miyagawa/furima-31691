@@ -55,9 +55,13 @@ RSpec.describe OrderForm, type: :model do
       end
       it 'user_idがないと登録できない' do
         @order_form.user_id = ""
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("User can't be blank")
       end
       it 'item_idがないと登録できない' do
         @order_form.item_id = ""
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
