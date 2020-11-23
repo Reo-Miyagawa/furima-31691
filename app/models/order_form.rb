@@ -17,7 +17,7 @@ class OrderForm #< ApplicationRecord
 
 
   def save
-  Order.create(user_id: user_id, item_id: item_id)
+  order = Order.create(user_id: user_id, item_id: item_id)
   Street.create(order_id: order.id, post_code: post_code, prefectures_id: prefectures_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number)
   end
 end
